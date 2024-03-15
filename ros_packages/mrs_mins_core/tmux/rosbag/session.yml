@@ -1,0 +1,26 @@
+# do not modify these
+root: ./
+name: simulation
+socket_name: mrs
+attach: false
+tmux_options: -f /etc/ctu-mrs/tmux.conf
+# you can modify these
+pre_window: export UAV_NAME=uav46; export RUN_TYPE=realworld; export UAV_TYPE=f330; export SENSORS=""
+startup_window: rosbag
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore
+  - rosbag:
+      layout: tiled
+      panes:
+        - cd ~/bag_files/
+  - mins:
+      layout: tiled
+      panes:
+        - waitForRos; rosparam set use_sim_time true; roslaunch mrs_mins_core rosbag_pico_t265.launch
+  - rviz:
+      layout: tiled
+      panes:
+        - waitForControl; rviz -d `rospack find mrs_mins_core`/rviz/rosbag_uav46_pico_t265.rviz
