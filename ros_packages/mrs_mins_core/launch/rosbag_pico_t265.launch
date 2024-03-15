@@ -9,7 +9,7 @@
 
   <arg name="t265_base_frame" default="$(arg UAV_NAME)/t265/link" />
   <arg name="t265_fcu_frame" default="$(arg UAV_NAME)/t265/fcu" />
-  <arg name="mins_imu_frame" default="imu" />
+  <!-- <arg name="mins_imu_frame" default="$(arg UAV_NAME)imu" /> -->
   <arg name="fcu_frame" default="$(arg UAV_NAME)/fcu" />
 
 
@@ -19,6 +19,19 @@
     <node name="mins_subscribe" pkg="mins" type="subscribe" output="screen" >
     <!-- <node name="mins_subscribe" pkg="mins" type="subscribe" output="screen" launch-prefix="debug_roslaunch" > -->
       <param name="config_path"       type="str"  value="$(find mrs_mins_core)/config/$(arg config)/config.yaml" />
+
+      <!-- tf frames -->
+      <param name="frame/fcu" type="str" value="$(arg UAV_NAME)/fcu" />
+      <param name="frame/global" type="str" value="$(arg UAV_NAME)/mins_global" />
+      <param name="frame/map" type="str" value="$(arg UAV_NAME)/min_map" />
+      <param name="frame/imu" type="str" value="$(arg UAV_NAME)/mins_imu" />
+      <param name="frame/cam" type="str" value="$(arg UAV_NAME)/mins_cam" />
+      <param name="frame/lidar" type="str" value="$(arg UAV_NAME)/mins_lidar" />
+      <param name="frame/gps" type="str" value="$(arg UAV_NAME)/mins_gps" />
+      <param name="frame/wheel" type="str" value="$(arg UAV_NAME)/mins_wheel" />
+      <param name="frame/vicon" type="str" value="$(arg UAV_NAME)/mins_vicon" />
+      <param name="frame/clone_enabled" type="bool" value="false" />
+      <param name="frame/clone" type="str" value="$(arg UAV_NAME)/mins_c" />
 
         <remap from="/mins/cam/msckf" to="mins/cam/msckf" />
         <remap from="/mins/cam/slam" to="mins/cam/slam" />
@@ -37,7 +50,7 @@
     <node pkg="tf2_ros" type="static_transform_publisher" name="tf_t265_to_fcu" args="-0.055 0.0 -0.065 0.0 0.0 0.0 $(arg t265_base_frame) $(arg t265_fcu_frame)" /> 
 
     <!-- tf for connecting mins tf tree with the main tf tree -->
-    <node pkg="tf2_ros" type="static_transform_publisher" name="tf_fcu_to_mins_imu" args="0.0 0.0 0.0 0.0 0.0 0.0 $(arg fcu_frame) $(arg mins_imu_frame)" />
+    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="tf_fcu_to_mins_imu" args="0.0 0.0 0.0 0.0 0.0 0.0 $(arg fcu_frame) $(arg mins_imu_frame)" /> -->
 <!--//}-->
 
 <!--//{ transforms imu measurements to fcu frame -->
