@@ -24,8 +24,8 @@ sources:
         target: mrs_mins_estimator_plugin
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/ctu-mrs/mrs_vins_imu_filter
-    name: mrs_vins_imu_filter
+  - repo: https://github.com/ctu-mrs/mrs_open_vins_core
+    name: mrs_open_vins_core
     rev: master
     type: git
     params:
@@ -33,6 +33,6 @@ sources:
       -
     links:
       - source: ''
-        target: mrs_vins_imu_filter
+        target: mrs_open_vins_core
     scripts:
       - git submodule update --init --recursive
