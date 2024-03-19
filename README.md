@@ -12,5 +12,4 @@ Metapackage containing submodules, launch files, config files, scripts, and othe
 |-----------------------------------------------------------------------------------|
 | [mins](https://github.com/ctu-mrs/mins)                                           |
 | [mrs_mins_estimator_plugin](https://github.com/ctu-mrs/mrs_mins_estimator_plugin) |
-| [mrs_vins_republisher](https://github.com/ctu-mrs/mrs_vins_republisher)           |
-| [mrs_vins_imu_filter](https://github.com/ctu-mrs/mrs_vins_imu_filter)             |
+| [mrs_open_vins_core](https://github.com/ctu-mrs/mrs_open_vins_core)               |
