@@ -4,6 +4,7 @@
   <arg name="RUN_TYPE" default="simulation" />
 
   <arg name="config" default="simulation/bluefox" />
+  <arg name="config_path" default="$(find mrs_mins_core)/config/$(arg config)/config.yaml" />
 
   <arg name="node_prefix" default=""/>
 
@@ -16,7 +17,7 @@
 <!--//{ run mins -->
     <node name="mins_subscribe" pkg="mins" type="subscribe" output="screen" >
     <!-- <node name="mins_subscribe" pkg="mins" type="subscribe" output="screen" launch-prefix="debug_roslaunch" > -->
-      <param name="config_path"       type="str"  value="$(find mrs_mins_core)/config/$(arg config)/config.yaml" />
+      <param name="config_path"       type="str"  value="$(arg config_path)" />
 
       <!-- namespace -->
       <param name="uav_name" type="str" value="$(arg UAV_NAME)" />
