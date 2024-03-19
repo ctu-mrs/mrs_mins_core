@@ -14,7 +14,7 @@
 
   <depend>cmake_modules</depend>
 
-  <depend>mins_ov_core</depend>
+  <depend>mins</depend>
   <depend>mrs_mins_estimator_plugin</depend>
   <depend>mrs_vins_republisher</depend>
   <depend>mrs_vins_imu_filter</depend>
