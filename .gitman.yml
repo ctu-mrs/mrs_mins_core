@@ -9,7 +9,7 @@ sources:
       -
     links:
       - source: ''
-        target: mins
+        target: ros_packages/mins
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_mins_estimator_plugin
@@ -21,7 +21,7 @@ sources:
       -
     links:
       - source: ''
-        target: mrs_mins_estimator_plugin
+        target: ros_packages/mrs_mins_estimator_plugin
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_open_vins_core
@@ -33,6 +33,6 @@ sources:
       -
     links:
       - source: ''
-        target: mrs_open_vins_core
+        target: ros_packages/mrs_open_vins_core
     scripts:
       - git submodule update --init --recursive
