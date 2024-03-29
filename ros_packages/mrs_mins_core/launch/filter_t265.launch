@@ -9,7 +9,7 @@
 
     <!-- nodelet settings-->
   <arg name="standalone" default="false" />
-  <arg name="manager" default="$(arg UAV_NAME)_vio_imu_manager" />
+  <arg name="manager" default="$(arg UAV_NAME)_mins_imu_manager" />
     <!-- <arg name="manager" default="$(arg UAV_NAME)_vinsimufilter_manager" /> -->
     <arg name="n_threads" default="8" />
     <arg unless="$(arg standalone)" name="nodelet" value="load"/>
@@ -28,7 +28,7 @@
 
     <group ns="$(arg UAV_NAME)">
       <!-- ================= VinsImuFilter nodelet ================ -->
-      <node pkg="nodelet" type="nodelet" name="vins_imu_filter" args="$(arg nodelet) vins_imu_filter/VinsImuFilter $(arg nodelet_manager)" launch-prefix="$(arg launch_prefix)" output="screen">
+      <node pkg="nodelet" type="nodelet" name="mins_imu_filter" args="$(arg nodelet) vins_imu_filter/VinsImuFilter $(arg nodelet_manager)" launch-prefix="$(arg launch_prefix)" output="screen">
 
         <rosparam file="$(find mrs_vins_imu_filter)/config/t265.yaml" command="load" />
 
