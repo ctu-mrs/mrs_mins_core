@@ -1,0 +1,19 @@
+tf_buffer_duration: 10.0
+
+inputs: ["pico_front", "pico_left", "pico_right", "pico_back"]
+
+pico_front:
+  topic: "picoflexx_front/points_filtered"
+  desired_rate: 10.0 # [Hz]
+
+pico_left:
+  topic: "picoflexx_left/points_filtered"
+  desired_rate: 10.0 # [Hz]
+
+pico_right:
+  topic: "picoflexx_right/points_filtered"
+  desired_rate: 10.0 # [Hz]
+
+pico_back:
+  topic: "picoflexx_back/points_filtered"
+  desired_rate: 10.0 # [Hz]

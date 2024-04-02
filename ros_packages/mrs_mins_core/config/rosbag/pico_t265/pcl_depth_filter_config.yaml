@@ -8,7 +8,7 @@ lidar3d:
   frequency: 10       # [Hz]
   vfov:      90       # [deg]
 
-  republish: false
+  republish: true
   keep_organized: true
 
   clip:
@@ -26,11 +26,11 @@ lidar3d:
       range: 5.0
 
   cropbox:
-    use: true
+    use: false
     crop_inside: true # if true, points inside the box will be cropped, otherwise points outside will be cropped
     frame_id: "fcu"
     min: [-0.5, -0.5, -0.5]
-    max: [3.0, 1.0, 0.5]
+    max: [0.5, 0.5, 0.5]
 
   ground_removal:
     use: false
@@ -45,8 +45,8 @@ lidar3d:
 
   downsampling:
     dynamic_row_selection: false
-    row_step: 2
-    col_step: 4
+    row_step: 1
+    col_step: 1
 
 rplidar:
   republish: false
@@ -54,218 +54,193 @@ rplidar:
 
 
 depth:
-  camera_names: ["picoflexx_left", "picoflexx_right", "picoflexx_back"]
-  # camera_names: ["picoflexx_left_old", "picoflexx_right_old", "picoflexx_top_old", "oak_old"]
-  
-  picoflexx_left:
+  camera_names: ["picoflexx_front", "picoflexx_left", "picoflexx_right", "picoflexx_top"]
+
+  picoflexx_front:
+
     frequency: 10 # [Hz]
-    vfov: 180      # [deg]
-    keep_ordered: true
+    vfov: 180     # [deg]
+    keep_ordered: false
 
     topic:
-      depth_in: "picoflexx_left/image_depth"
-      depth_camera_info_in: "picoflexx_left/camera_info"
-      points_out: "picoflexx_left/pcl_filtered"
-      points_over_max_range_out: "picoflexx_left/points_over_max_range" # used if non-empty and range_clip used
+      depth_in: "picoflexx_front/image_depth_rect"
+      depth_camera_info_in: "picoflexx_front/camera_info"
+      points_out: "picoflexx_front/points_filtered"
+      points_over_max_range_out: "picoflexx_front/points_over_max_range" # used if non-empty and range_clip used
 
-    filter:
+    mask:
+      enabled: true
+      topic:
+        mask_in: "picoflexx_front_mask/image_raw"
+        depth_out: "picoflexx_front/masked_depth"
+
+    intensity:
+      enabled: false
+      sync_exact: true
+      topic_in: "picoflexx_front/image_mono8"
+      filter:
+        enabled: true
+        threshold: 15
+        topic_out: "picoflexx_front/points_low_intensity"
+
+    depth_filter:
+      range_clip:
+        min: 0.35
+        max: 5.0 # used if >0, maintains ordering if keep_ordered=true
       downsample:
         step:
           row: 1 # used if >1, maintains ordering if keep_ordered=true
           col: 1 # used if >1, maintains ordering if keep_ordered=true
+
+    cloud_filter:
+      sequence: ["voxel_grid", "NormS"] # sequence of filters below to be applied (in this order)
+      voxel_grid:         # uniform sampling (breaks ordering)
+        resolution: 0.20  # (m) | voxel size
+      NormS:              # Rusinkiewicz and Levoy, Efficient Variants of the ICP Algorithm, 2001 (breaks ordering)
+        count: 1000            # <0, max(unsigned int)) | number of points to sample
+        resolution: !degrees 2 # (rad)
+      CovS:                     # Gelfand et. al, Geometrically stable sampling for the ICP algorithm, 2003 (breaks ordering)
+        count: 1500         # <0, max(unsigned int)) | number of points to sample
+        torque_norm: "Lavg" # {L1, Lavg, Lmax}       | method of torque normalization
+
+
+  picoflexx_left:
+
+    frequency: 10 # [Hz]
+    vfov: 180     # [deg]
+    keep_ordered: false
+
+    topic:
+      depth_in: "picoflexx_left/image_depth_rect"
+      depth_camera_info_in: "picoflexx_left/camera_info"
+      points_out: "picoflexx_left/points_filtered"
+      points_over_max_range_out: "picoflexx_left/points_over_max_range" # used if non-empty and range_clip used
+
+    mask:
+      enabled: true
+      topic:
+        mask_in: "picoflexx_left_mask/image_raw"
+        depth_out: "picoflexx_left/masked_depth"
+
+    intensity:
+      enabled: false
+      sync_exact: true
+      topic_in: "picoflexx_left/image_mono8"
+      filter:
+        enabled: true
+        threshold: 15
+        topic_out: "picoflexx_left/points_low_intensity"
+
+    depth_filter:
       range_clip:
-        min: 0.1
-        max: 4.0 # used if >0, maintains ordering if keep_ordered=true
-      voxel_grid:
-        resolution: 0.2 # used if >0, BREAKS ordering even if keep_ordered=true
-      radius_outlier:
-        radius: 0.0 # used if both >0, maintains ordering if keep_ordered=true
-        neighbors: 2
-      minimum_grid:
-        resolution: 0.0 # used if >0, BREAKS ordering even if keep_ordered=true
-      bilateral:
-        sigma_S: 0.0 # used if both >0, BREAKS ordering even if keep_ordered=true
-        sigma_R: 0.005 # crashes with bad_alloc error
+        min: 0.35
+        max: 5.0 # used if >0, maintains ordering if keep_ordered=true
+      downsample:
+        step:
+          row: 1 # used if >1, maintains ordering if keep_ordered=true
+          col: 1 # used if >1, maintains ordering if keep_ordered=true
+
+    cloud_filter:
+      sequence: ["voxel_grid", "NormS"] # sequence of filters below to be applied (in this order)
+      voxel_grid:         # uniform sampling (breaks ordering)
+        resolution: 0.20  # (m) | voxel size
+      NormS:              # Rusinkiewicz and Levoy, Efficient Variants of the ICP Algorithm, 2001 (breaks ordering)
+        count: 1000            # <0, max(unsigned int)) | number of points to sample
+        resolution: !degrees 2 # (rad)
+      CovS:                     # Gelfand et. al, Geometrically stable sampling for the ICP algorithm, 2003 (breaks ordering)
+        count: 1500         # <0, max(unsigned int)) | number of points to sample
+        torque_norm: "Lavg" # {L1, Lavg, Lmax}       | method of torque normalization
 
   picoflexx_right:
+
     frequency: 10 # [Hz]
-    vfov: 180      # [deg]
-    keep_ordered: true
+    vfov: 180     # [deg]
+    keep_ordered: false
 
     topic:
-      depth_in: "picoflexx_right/image_depth"
+      depth_in: "picoflexx_right/image_depth_rect"
       depth_camera_info_in: "picoflexx_right/camera_info"
-      points_out: "picoflexx_right/pcl_filtered"
+      points_out: "picoflexx_right/points_filtered"
       points_over_max_range_out: "picoflexx_right/points_over_max_range" # used if non-empty and range_clip used
 
-    filter:
+    mask:
+      enabled: true
+      topic:
+        mask_in: "picoflexx_right_mask/image_raw"
+        depth_out: "picoflexx_right/masked_depth"
+
+    intensity:
+      enabled: false
+      sync_exact: true
+      topic_in: "picoflexx_right/image_mono8"
+      filter:
+        enabled: true
+        threshold: 15
+        topic_out: "picoflexx_right/points_low_intensity"
+
+    depth_filter:
+      range_clip:
+        min: 0.35
+        max: 5.0 # used if >0, maintains ordering if keep_ordered=true
       downsample:
         step:
           row: 1 # used if >1, maintains ordering if keep_ordered=true
           col: 1 # used if >1, maintains ordering if keep_ordered=true
-      range_clip:
-        min: 0.1
-        max: 4.0 # used if >0, maintains ordering if keep_ordered=true
-      voxel_grid:
-        resolution: 0.2 # used if >0, BREAKS ordering even if keep_ordered=true
-      radius_outlier:
-        radius: 0.0 # used if both >0, maintains ordering if keep_ordered=true
-        neighbors: 2
-      minimum_grid:
-        resolution: 0.0 # used if >0, BREAKS ordering even if keep_ordered=true
-      bilateral:
-        sigma_S: 0.0 # used if both >0, BREAKS ordering even if keep_ordered=true
-        sigma_R: 0.005 # crashes with bad_alloc error
 
+    cloud_filter:
+      sequence: ["voxel_grid", "NormS"] # sequence of filters below to be applied (in this order)
+      voxel_grid:         # uniform sampling (breaks ordering)
+        resolution: 0.20  # (m) | voxel size
+      NormS:              # Rusinkiewicz and Levoy, Efficient Variants of the ICP Algorithm, 2001 (breaks ordering)
+        count: 1000            # <0, max(unsigned int)) | number of points to sample
+        resolution: !degrees 2 # (rad)
+      CovS:                     # Gelfand et. al, Geometrically stable sampling for the ICP algorithm, 2003 (breaks ordering)
+        count: 1500         # <0, max(unsigned int)) | number of points to sample
+        torque_norm: "Lavg" # {L1, Lavg, Lmax}       | method of torque normalization
 
-  picoflexx_back:
+  picoflexx_top:
+
     frequency: 10 # [Hz]
-    vfov: 180      # [deg]
-    keep_ordered: true
+    vfov: 180     # [deg]
+    keep_ordered: false
 
     topic:
-      depth_in: "picoflexx_back/image_depth"
-      depth_camera_info_in: "picoflexx_back/camera_info"
-      points_out: "picoflexx_back/pcl_filtered"
-      points_over_max_range_out: "picoflexx_back/points_over_max_range" # used if non-empty and range_clip used
-
-    filter:
-      downsample:
-        step:
-          row: 1 # used if >1, maintains ordering if keep_ordered=true
-          col: 1 # used if >1, maintains ordering if keep_ordered=true
-      range_clip:
-        min: 0.1
-        max: 4.0 # used if >0, maintains ordering if keep_ordered=true
-      voxel_grid:
-        resolution: 0.2 # used if >0, BREAKS ordering even if keep_ordered=true
-      radius_outlier:
-        radius: 0.0 # used if both >0, maintains ordering if keep_ordered=true
-        neighbors: 2
-      minimum_grid:
-        resolution: 0.0 # used if >0, BREAKS ordering even if keep_ordered=true
-      bilateral:
-        sigma_S: 0.0 # used if both >0, BREAKS ordering even if keep_ordered=true
-        sigma_R: 0.005 # crashes with bad_alloc error
-
-  picoflexx_left_old:
-    frequency: 10 # [Hz]
-    vfov: 180      # [deg]
-    keep_ordered: true
-
-    topic:
-      depth_in: "pico_flexx_left/image_depth"
-      depth_camera_info_in: "pico_flexx_left/camera_info"
-      points_out: "picoflexx_left/pcl_filtered"
-      points_over_max_range_out: "picoflexx_left/points_over_max_range" # used if non-empty and range_clip used
-
-    filter:
-      downsample:
-        step:
-          row: 1 # used if >1, maintains ordering if keep_ordered=true
-          col: 1 # used if >1, maintains ordering if keep_ordered=true
-      range_clip:
-        min: 0.1
-        max: 4.0 # used if >0, maintains ordering if keep_ordered=true
-      voxel_grid:
-        resolution: 0.1 # used if >0, BREAKS ordering even if keep_ordered=true
-      radius_outlier:
-        radius: 0.0 # used if both >0, maintains ordering if keep_ordered=true
-        neighbors: 2
-      minimum_grid:
-        resolution: 0.0 # used if >0, BREAKS ordering even if keep_ordered=true
-      bilateral:
-        sigma_S: 0.0 # used if both >0, BREAKS ordering even if keep_ordered=true
-        sigma_R: 0.005 # crashes with bad_alloc error
-
-  picoflexx_right_old:
-    frequency: 10 # [Hz]
-    vfov: 180      # [deg]
-    keep_ordered: true
-
-    topic:
-      depth_in: "pico_flexx_right/image_depth"
-      depth_camera_info_in: "pico_flexx_right/camera_info"
-      points_out: "picoflexx_right/pcl_filtered"
-      points_over_max_range_out: "picoflexx_right/points_over_max_range" # used if non-empty and range_clip used
-
-    filter:
-      downsample:
-        step:
-          row: 1 # used if >1, maintains ordering if keep_ordered=true
-          col: 1 # used if >1, maintains ordering if keep_ordered=true
-      range_clip:
-        min: 0.1
-        max: 4.0 # used if >0, maintains ordering if keep_ordered=true
-      voxel_grid:
-        resolution: 0.1 # used if >0, BREAKS ordering even if keep_ordered=true
-      radius_outlier:
-        radius: 0.0 # used if both >0, maintains ordering if keep_ordered=true
-        neighbors: 2
-      minimum_grid:
-        resolution: 0.0 # used if >0, BREAKS ordering even if keep_ordered=true
-      bilateral:
-        sigma_S: 0.0 # used if both >0, BREAKS ordering even if keep_ordered=true
-        sigma_R: 0.005 # crashes with bad_alloc error
-
-
-  picoflexx_top_old:
-    frequency: 10 # [Hz]
-    vfov: 180      # [deg]
-    keep_ordered: true
-
-    topic:
-      depth_in: "pico_flexx_top/image_depth"
-      depth_camera_info_in: "pico_flexx_top/camera_info"
-      points_out: "picoflexx_back/pcl_filtered"
+      depth_in: "picoflexx_top/image_depth_rect"
+      depth_camera_info_in: "picoflexx_top/camera_info"
+      points_out: "picoflexx_top/points_filtered"
       points_over_max_range_out: "picoflexx_top/points_over_max_range" # used if non-empty and range_clip used
 
-    filter:
+    mask:
+      enabled: false
+      topic:
+        mask_in: "picoflexx_top_mask/image_raw"
+        depth_out: "picoflexx_top/masked_depth"
+
+    intensity:
+      enabled: false
+      sync_exact: true
+      topic_in: "picoflexx_top/image_mono8"
+      filter:
+        enabled: true
+        threshold: 15
+        topic_out: "picoflexx_top/points_low_intensity"
+
+    depth_filter:
+      range_clip:
+        min: 0.35
+        max: 5.0 # used if >0, maintains ordering if keep_ordered=true
       downsample:
         step:
           row: 1 # used if >1, maintains ordering if keep_ordered=true
           col: 1 # used if >1, maintains ordering if keep_ordered=true
-      range_clip:
-        min: 0.1
-        max: 4.0 # used if >0, maintains ordering if keep_ordered=true
-      voxel_grid:
-        resolution: 0.1 # used if >0, BREAKS ordering even if keep_ordered=true
-      radius_outlier:
-        radius: 0.0 # used if both >0, maintains ordering if keep_ordered=true
-        neighbors: 2
-      minimum_grid:
-        resolution: 0.0 # used if >0, BREAKS ordering even if keep_ordered=true
-      bilateral:
-        sigma_S: 0.0 # used if both >0, BREAKS ordering even if keep_ordered=true
-        sigma_R: 0.005 # crashes with bad_alloc error
 
-  oak_old:
-    frequency: 10 # [Hz]
-    vfov: 180      # [deg]
-    keep_ordered: true
-
-    topic:
-      depth_in: "oak/stereo/image_raw"
-      depth_camera_info_in: "oak/stereo/camera_info"
-      points_out: "oak/stereo/pcl_filtered"
-      points_over_max_range_out: "oak/stereo/points_over_max_range" # used if non-empty and range_clip used
-
-    filter:
-      downsample:
-        step:
-          row: 1 # used if >1, maintains ordering if keep_ordered=true
-          col: 1 # used if >1, maintains ordering if keep_ordered=true
-      range_clip:
-        min: 0.1
-        max: 6.0 # used if >0, maintains ordering if keep_ordered=true
-      voxel_grid:
-        resolution: 0.1 # used if >0, BREAKS ordering even if keep_ordered=true
-      radius_outlier:
-        radius: 0.0 # used if both >0, maintains ordering if keep_ordered=true
-        neighbors: 2
-      minimum_grid:
-        resolution: 0.0 # used if >0, BREAKS ordering even if keep_ordered=true
-      bilateral:
-        sigma_S: 0.0 # used if both >0, BREAKS ordering even if keep_ordered=true
-        sigma_R: 0.005 # crashes with bad_alloc error
-
+    cloud_filter:
+      sequence: ["voxel_grid", "NormS"] # sequence of filters below to be applied (in this order)
+      voxel_grid:         # uniform sampling (breaks ordering)
+        resolution: 0.20  # (m) | voxel size
+      NormS:              # Rusinkiewicz and Levoy, Efficient Variants of the ICP Algorithm, 2001 (breaks ordering)
+        count: 1000            # <0, max(unsigned int)) | number of points to sample
+        resolution: !degrees 2 # (rad)
+      CovS:                     # Gelfand et. al, Geometrically stable sampling for the ICP algorithm, 2003 (breaks ordering)
+        count: 1500         # <0, max(unsigned int)) | number of points to sample
+        torque_norm: "Lavg" # {L1, Lavg, Lmax}       | method of torque normalization

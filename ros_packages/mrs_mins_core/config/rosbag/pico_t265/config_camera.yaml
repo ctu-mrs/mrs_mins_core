@@ -2,6 +2,8 @@
 
 cam:
   enabled: true
+  time_analysis: false
+  num_opencv_threads: 4 # -1: auto, 0-1: serial, >1: number of threads
   max_n: 2
   use_stereo: true
   stereo_pair: [0, 1]
@@ -17,7 +19,7 @@ cam:
   downsample: false
   histogram_method: "HISTOGRAM" # NONE, HISTOGRAM, CLAHE
   max_slam: 50
-  max_msckf: 10
+  max_msckf: 50
   feat_rep: "GLOBAL_3D"
   init_cov_dt: 1e-4
   init_cov_ex_o: 1e-4
@@ -26,7 +28,7 @@ cam:
   init_cov_in_c: 1e-0
   init_cov_in_r: 1e-5
   sigma_px: 1
-  chi2_mult: 1
+  chi2_mult: 1.5
 
   # ==================================================================
   # ==================================================================
@@ -43,7 +45,7 @@ cam0:
   distortion_model: equidistant
   intrinsics: [284.378601074219,285.364898681641, 423.223510742188, 402.276000976562] #fu, fv, cu, cv
   resolution: [848, 800]
-  topic: "/uav46/t265/fisheye1/image_raw"
+  topic: "t265/fisheye1/image_raw"
 cam1:
   timeoffset: 0.024
   T_imu_cam: #rotation from camera to IMU R_CtoI, position of camera in IMU p_CinI
@@ -57,4 +59,4 @@ cam1:
   distortion_model: equidistant
   intrinsics: [285.629211425781, 286.654602050781, 433.148193359375, 403.567413330078] #fu, fv, cu, cv
   resolution: [848, 800]
-  topic: "/uav46/t265/fisheye2/image_raw"
+  topic: "t265/fisheye2/image_raw"
