@@ -2,12 +2,14 @@
 
 cam:
   enabled: true
+  time_analysis: false
+  num_opencv_threads: 4 # -1: auto, 0-1: serial, >1: number of threads
   max_n: 2
   use_stereo: true
   stereo_pair: [0, 1]
-  do_calib_ext: false
-  do_calib_int: false
-  do_calib_dt: false
+  do_calib_ext: true
+  do_calib_int: true
+  do_calib_dt: true
   n_pts: 200
   fast: 15
   grid_x: 20
@@ -16,8 +18,8 @@ cam:
   knn: 0.70
   downsample: false
   histogram_method: "HISTOGRAM" # NONE, HISTOGRAM, CLAHE
-  max_slam: 100
-  max_msckf: 10
+  max_slam: 50
+  max_msckf: 50 # if there are more slam points than max_msckf, new ones are not initialized
   feat_rep: "GLOBAL_3D"
   init_cov_dt: 1e-4
   init_cov_ex_o: 1e-4
@@ -51,6 +53,8 @@ cam0:
   intrinsics: [286.89125,286.67065,422.99450,400.04882]
   resolution: [848, 800]
   topic: "t265/fisheye1/image_raw"
+  use_mask: true
+  mask: "mask_t265_848_800_left.png"
 cam1:
   # timeoffset: 0.024
   timeoffset: 0.019
@@ -72,4 +76,5 @@ cam1:
   intrinsics: [288.17342,287.41413,432.53355,401.18710]
   resolution: [848, 800]
   topic: "t265/fisheye2/image_raw"
-
+  use_mask: true
+  mask: "mask_t265_848_800_right.png"
