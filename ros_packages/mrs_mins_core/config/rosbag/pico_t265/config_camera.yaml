@@ -7,9 +7,9 @@ cam:
   max_n: 2
   use_stereo: true
   stereo_pair: [0, 1]
-  do_calib_ext: false
-  do_calib_int: false
-  do_calib_dt: false
+  do_calib_ext: true
+  do_calib_int: true
+  do_calib_dt: true
   n_pts: 200
   fast: 15
   grid_x: 20
@@ -19,7 +19,7 @@ cam:
   downsample: false
   histogram_method: "HISTOGRAM" # NONE, HISTOGRAM, CLAHE
   max_slam: 50
-  max_msckf: 50
+  max_msckf: 50 # if there are more slam points than max_msckf, new ones are not initialized
   feat_rep: "GLOBAL_3D"
   init_cov_dt: 1e-4
   init_cov_ex_o: 1e-4
@@ -46,6 +46,8 @@ cam0:
   intrinsics: [284.378601074219,285.364898681641, 423.223510742188, 402.276000976562] #fu, fv, cu, cv
   resolution: [848, 800]
   topic: "t265/fisheye1/image_raw"
+  use_mask: true
+  mask: "mask_t265_848_800_left.png"
 cam1:
   timeoffset: 0.024
   T_imu_cam: #rotation from camera to IMU R_CtoI, position of camera in IMU p_CinI
@@ -60,3 +62,5 @@ cam1:
   intrinsics: [285.629211425781, 286.654602050781, 433.148193359375, 403.567413330078] #fu, fv, cu, cv
   resolution: [848, 800]
   topic: "t265/fisheye2/image_raw"
+  use_mask: true
+  mask: "mask_t265_848_800_right.png"
