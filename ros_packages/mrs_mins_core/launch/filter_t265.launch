@@ -28,7 +28,7 @@
 
     <group ns="$(arg UAV_NAME)">
       <!-- ================= VinsImuFilter nodelet ================ -->
-      <node pkg="nodelet" type="nodelet" name="mins_imu_filter" args="$(arg nodelet) vins_imu_filter/VinsImuFilter $(arg nodelet_manager)" launch-prefix="$(arg launch_prefix)" output="screen">
+      <node pkg="nodelet" type="nodelet" name="mins_imu_filter" args="$(arg nodelet) mrs_vins_imu_filter/VinsImuFilter $(arg nodelet_manager)" launch-prefix="$(arg launch_prefix)" output="screen">
 
         <rosparam file="$(find mrs_vins_imu_filter)/config/t265.yaml" command="load" />
 
