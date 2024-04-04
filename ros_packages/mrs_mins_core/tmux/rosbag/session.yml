@@ -20,6 +20,10 @@ windows:
       layout: tiled
       panes:
         - waitForRos; rosparam set use_sim_time true; roslaunch mrs_mins_core rosbag_pico_t265.launch
+  - core:
+      layout: tiled
+      panes: 
+        - waitForTime; rosparam set use_sim_time true; roslaunch mrs_mins_core rosbag_core.launch platform_config:=`rospack find mrs_uav_deployment`/config/mrs_uav_system/$UAV_TYPE.yaml world_config:=./config/world_config.yaml custom_config:=./config/mrs_uav_managers_mins.yaml network_config:=./config/network_config.yaml
   - rviz:
       layout: tiled
       panes:
