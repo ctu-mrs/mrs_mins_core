@@ -75,12 +75,12 @@ depth:
         depth_out: "picoflexx_front/masked_depth"
 
     intensity:
-      enabled: false
+      enabled: true
       sync_exact: true
       topic_in: "picoflexx_front/image_mono8"
       filter:
         enabled: true
-        threshold: 15
+        threshold: 10
         topic_out: "picoflexx_front/points_low_intensity"
 
     depth_filter:
@@ -91,18 +91,6 @@ depth:
         step:
           row: 1 # used if >1, maintains ordering if keep_ordered=true
           col: 1 # used if >1, maintains ordering if keep_ordered=true
-
-    cloud_filter:
-      sequence: ["voxel_grid", "NormS"] # sequence of filters below to be applied (in this order)
-      voxel_grid:         # uniform sampling (breaks ordering)
-        resolution: 0.20  # (m) | voxel size
-      NormS:              # Rusinkiewicz and Levoy, Efficient Variants of the ICP Algorithm, 2001 (breaks ordering)
-        count: 1000            # <0, max(unsigned int)) | number of points to sample
-        resolution: !degrees 2 # (rad)
-      CovS:                     # Gelfand et. al, Geometrically stable sampling for the ICP algorithm, 2003 (breaks ordering)
-        count: 1500         # <0, max(unsigned int)) | number of points to sample
-        torque_norm: "Lavg" # {L1, Lavg, Lmax}       | method of torque normalization
-
 
   picoflexx_left:
 
@@ -123,12 +111,12 @@ depth:
         depth_out: "picoflexx_left/masked_depth"
 
     intensity:
-      enabled: false
+      enabled: true
       sync_exact: true
       topic_in: "picoflexx_left/image_mono8"
       filter:
         enabled: true
-        threshold: 15
+        threshold: 10
         topic_out: "picoflexx_left/points_low_intensity"
 
     depth_filter:
@@ -139,17 +127,6 @@ depth:
         step:
           row: 1 # used if >1, maintains ordering if keep_ordered=true
           col: 1 # used if >1, maintains ordering if keep_ordered=true
-
-    cloud_filter:
-      sequence: ["voxel_grid", "NormS"] # sequence of filters below to be applied (in this order)
-      voxel_grid:         # uniform sampling (breaks ordering)
-        resolution: 0.20  # (m) | voxel size
-      NormS:              # Rusinkiewicz and Levoy, Efficient Variants of the ICP Algorithm, 2001 (breaks ordering)
-        count: 1000            # <0, max(unsigned int)) | number of points to sample
-        resolution: !degrees 2 # (rad)
-      CovS:                     # Gelfand et. al, Geometrically stable sampling for the ICP algorithm, 2003 (breaks ordering)
-        count: 1500         # <0, max(unsigned int)) | number of points to sample
-        torque_norm: "Lavg" # {L1, Lavg, Lmax}       | method of torque normalization
 
   picoflexx_right:
 
@@ -170,12 +147,12 @@ depth:
         depth_out: "picoflexx_right/masked_depth"
 
     intensity:
-      enabled: false
+      enabled: true
       sync_exact: true
       topic_in: "picoflexx_right/image_mono8"
       filter:
         enabled: true
-        threshold: 15
+        threshold: 10
         topic_out: "picoflexx_right/points_low_intensity"
 
     depth_filter:
@@ -186,17 +163,6 @@ depth:
         step:
           row: 1 # used if >1, maintains ordering if keep_ordered=true
           col: 1 # used if >1, maintains ordering if keep_ordered=true
-
-    cloud_filter:
-      sequence: ["voxel_grid", "NormS"] # sequence of filters below to be applied (in this order)
-      voxel_grid:         # uniform sampling (breaks ordering)
-        resolution: 0.20  # (m) | voxel size
-      NormS:              # Rusinkiewicz and Levoy, Efficient Variants of the ICP Algorithm, 2001 (breaks ordering)
-        count: 1000            # <0, max(unsigned int)) | number of points to sample
-        resolution: !degrees 2 # (rad)
-      CovS:                     # Gelfand et. al, Geometrically stable sampling for the ICP algorithm, 2003 (breaks ordering)
-        count: 1500         # <0, max(unsigned int)) | number of points to sample
-        torque_norm: "Lavg" # {L1, Lavg, Lmax}       | method of torque normalization
 
   picoflexx_top:
 
@@ -217,12 +183,12 @@ depth:
         depth_out: "picoflexx_top/masked_depth"
 
     intensity:
-      enabled: false
+      enabled: true
       sync_exact: true
       topic_in: "picoflexx_top/image_mono8"
       filter:
         enabled: true
-        threshold: 15
+        threshold: 10
         topic_out: "picoflexx_top/points_low_intensity"
 
     depth_filter:
@@ -233,14 +199,3 @@ depth:
         step:
           row: 1 # used if >1, maintains ordering if keep_ordered=true
           col: 1 # used if >1, maintains ordering if keep_ordered=true
-
-    cloud_filter:
-      sequence: ["voxel_grid", "NormS"] # sequence of filters below to be applied (in this order)
-      voxel_grid:         # uniform sampling (breaks ordering)
-        resolution: 0.20  # (m) | voxel size
-      NormS:              # Rusinkiewicz and Levoy, Efficient Variants of the ICP Algorithm, 2001 (breaks ordering)
-        count: 1000            # <0, max(unsigned int)) | number of points to sample
-        resolution: !degrees 2 # (rad)
-      CovS:                     # Gelfand et. al, Geometrically stable sampling for the ICP algorithm, 2003 (breaks ordering)
-        count: 1500         # <0, max(unsigned int)) | number of points to sample
-        torque_norm: "Lavg" # {L1, Lavg, Lmax}       | method of torque normalization

@@ -1,9 +1,9 @@
 %YAML:1.0 # need to specify the file type at the top!
 
 lidar:
-  enabled: false
+  enabled: true
   max_n: 1
-  do_calib_dt: false
+  do_calib_dt: true
   do_calib_ext: false
   init_cov_dt: 1e-4
   init_cov_ex_o: 1e-4
@@ -29,7 +29,7 @@ lidar:
   plane_max_condi: 200.0 # condition number of the matrix A of least squares plane to neighbors fitting to be used in update
 
 lidar0:
-  timeoffset: 0.02
+  timeoffset: -0.01
   T_imu_lidar:
    - [ 1, 0, 0]
    - [ 0, 1, 0]
