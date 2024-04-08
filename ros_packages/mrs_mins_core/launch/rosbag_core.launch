@@ -31,11 +31,6 @@
   <arg if="$(eval arg('nodelet_manager') == '')" name="nodelet_manager_name" default="$(arg UAV_NAME)_nodelet_manager_rosbag" />
   <arg if="$(eval arg('nodelet_manager') != '')" name="nodelet_manager_name" default="$(arg nodelet_manager)" />
 
-  <!-- check for ROS_MASTER_URI -->
-  <!-- ROS_MASTER_URI has to be set to http://localhost:11311 -->
-  <arg if="$(eval arg('RUN_TYPE') == 'realworld')" name="ROS_MASTER_URI" default="$(optenv ROS_MASTER_URI none)" />
-  <arg if="$(eval arg('RUN_TYPE') == 'realworld' and arg('ROS_MASTER_URI') != 'http://localhost:11311')" name="SET_YOUR_ROS_MASTER_URI_TO_LOCALHOST" default="$(env MISSING_ROS_MASTER_URI)" />
-
   <arg name="g" default="9.81" />
   <arg name="n_threads" default="16" />
 

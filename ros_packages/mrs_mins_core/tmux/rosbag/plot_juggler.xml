@@ -1,181 +1,225 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <root>
- <tabbed_widget parent="main_window" name="Main Window">
-  <Tab tab_name="pos" containers="1">
+ <tabbed_widget name="Main Window" parent="main_window">
+  <Tab containers="1" tab_name="pos">
    <Container>
-    <DockSplitter count="3" orientation="-" sizes="0.333071;0.333858;0.333071">
+    <DockSplitter orientation="-" count="3" sizes="0.333333;0.333333;0.333333">
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.528423" bottom="-0.062221" left="1712156269.238425" top="0.226179"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="1.333663" right="1712419250.778328" bottom="-0.659760"/>
        <limitY/>
-       <curve color="#000e7e" name="/uav46/mins/imu/odom/pose/pose/position/x"/>
-       <curve color="#0eecff" name="/uav46/vins_republisher/odom/pose/pose/position/x"/>
-       <curve color="#009800" name="/uav46/estimation_manager/mins/uav_state/pose/position/x"/>
-       <curve color="#a7ff00" name="/uav46/estimation_manager/open_vins/uav_state/pose/position/x"/>
-       <curve color="#000000" name="/uav46/control_manager/control_reference/pose/pose/position/x"/>
+       <curve name="/uav46/mins/imu/odom/pose/pose/position/x" color="#000e7e"/>
+       <curve name="/uav46/vins_republisher/odom/pose/pose/position/x" color="#0eecff"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/pose/position/x" color="#009800"/>
+       <curve name="/uav46/estimation_manager/open_vins/uav_state/pose/position/x" color="#a7ff00"/>
+       <curve name="/uav46/control_manager/control_reference/pose/pose/position/x" color="#000000"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.528423" bottom="-0.451243" left="1712156269.238425" top="0.176480"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="0.050031" right="1712419250.778328" bottom="-2.610076"/>
        <limitY/>
-       <curve color="#000092" name="/uav46/mins/imu/odom/pose/pose/position/y"/>
-       <curve color="#00e6ff" name="/uav46/vins_republisher/odom/pose/pose/position/y"/>
-       <curve color="#009920" name="/uav46/estimation_manager/mins/uav_state/pose/position/y"/>
-       <curve color="#92ff00" name="/uav46/estimation_manager/open_vins/uav_state/pose/position/y"/>
-       <curve color="#000000" name="/uav46/control_manager/control_reference/pose/pose/position/y"/>
+       <curve name="/uav46/mins/imu/odom/pose/pose/position/y" color="#000092"/>
+       <curve name="/uav46/vins_republisher/odom/pose/pose/position/y" color="#00e6ff"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/pose/position/y" color="#009920"/>
+       <curve name="/uav46/estimation_manager/open_vins/uav_state/pose/position/y" color="#92ff00"/>
+       <curve name="/uav46/control_manager/control_reference/pose/pose/position/y" color="#000000"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.528423" bottom="-0.034327" left="1712156269.238425" top="1.358730"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="1.196224" right="1712419250.778328" bottom="0.075036"/>
        <limitY/>
-       <curve color="#0400a5" name="/uav46/mins/imu/odom/pose/pose/position/z"/>
-       <curve color="#00fcff" name="/uav46/vins_republisher/odom/pose/pose/position/z"/>
-       <curve color="#009508" name="/uav46/estimation_manager/mins/uav_state/pose/position/z"/>
-       <curve color="#a6ff00" name="/uav46/estimation_manager/open_vins/uav_state/pose/position/z"/>
-       <curve color="#000000" name="/uav46/control_manager/control_reference/pose/pose/position/z"/>
+       <curve name="/uav46/mins/imu/odom/pose/pose/position/z" color="#0400a5"/>
+       <curve name="/uav46/vins_republisher/odom/pose/pose/position/z" color="#00fcff"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/pose/position/z" color="#009508"/>
+       <curve name="/uav46/estimation_manager/open_vins/uav_state/pose/position/z" color="#a6ff00"/>
+       <curve name="/uav46/control_manager/control_reference/pose/pose/position/z" color="#000000"/>
       </plot>
      </DockArea>
     </DockSplitter>
    </Container>
   </Tab>
-  <Tab tab_name="vel" containers="1">
+  <Tab containers="1" tab_name="vel">
    <Container>
-    <DockSplitter count="3" orientation="-" sizes="0.333071;0.333858;0.333071">
+    <DockSplitter orientation="-" count="3" sizes="0.332762;0.334477;0.332762">
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.528423" bottom="-0.199197" left="1712156269.238425" top="0.191552"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="0.632266" right="1712419250.787615" bottom="-0.587103"/>
        <limitY/>
-       <curve color="#000cad" name="/uav46/mins/imu/odom/twist/twist/linear/x"/>
-       <curve color="#00e3ff" name="/uav46/vins_republisher/odom/twist/twist/linear/x"/>
-       <curve color="#058a00" name="/uav46/estimation_manager/mins/uav_state/velocity/linear/x"/>
-       <curve color="#9cfe00" name="/uav46/estimation_manager/open_vins/uav_state/velocity/linear/x"/>
-       <curve color="#000000" name="/uav46/control_manager/control_reference/twist/twist/linear/x"/>
+       <curve name="/uav46/mins/imu/odom/twist/twist/linear/x" color="#000cad"/>
+       <curve name="/uav46/vins_republisher/odom/twist/twist/linear/x" color="#00e3ff"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/velocity/linear/x" color="#058a00"/>
+       <curve name="/uav46/estimation_manager/open_vins/uav_state/velocity/linear/x" color="#9cfe00"/>
+       <curve name="/uav46/control_manager/control_reference/twist/twist/linear/x" color="#000000"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.528423" bottom="-0.208430" left="1712156269.238425" top="0.228860"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="0.241353" right="1712419250.787615" bottom="-0.655112"/>
        <limitY/>
-       <curve color="#0011a1" name="/uav46/mins/imu/odom/twist/twist/linear/y"/>
-       <curve color="#00f4ff" name="/uav46/vins_republisher/odom/twist/twist/linear/y"/>
-       <curve color="#038700" name="/uav46/estimation_manager/mins/uav_state/velocity/linear/y"/>
-       <curve color="#99ff00" name="/uav46/estimation_manager/open_vins/uav_state/velocity/linear/y"/>
-       <curve color="#000000" name="/uav46/control_manager/control_reference/twist/twist/linear/y"/>
+       <curve name="/uav46/mins/imu/odom/twist/twist/linear/y" color="#0011a1"/>
+       <curve name="/uav46/vins_republisher/odom/twist/twist/linear/y" color="#00f4ff"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/velocity/linear/y" color="#038700"/>
+       <curve name="/uav46/estimation_manager/open_vins/uav_state/velocity/linear/y" color="#99ff00"/>
+       <curve name="/uav46/control_manager/control_reference/twist/twist/linear/y" color="#000000"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.528423" bottom="-0.417203" left="1712156269.238425" top="0.661443"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="0.627278" right="1712419250.787615" bottom="-0.694573"/>
        <limitY/>
-       <curve color="#000c79" name="/uav46/mins/imu/odom/twist/twist/linear/z"/>
-       <curve color="#00ffff" name="/uav46/vins_republisher/odom/twist/twist/linear/z"/>
-       <curve color="#007900" name="/uav46/estimation_manager/mins/uav_state/velocity/linear/z"/>
-       <curve color="#80ff00" name="/uav46/estimation_manager/open_vins/uav_state/velocity/linear/z"/>
-       <curve color="#a10600" name="/uav46/hw_api/velocity/vector/z"/>
-       <curve color="#000000" name="/uav46/control_manager/control_reference/twist/twist/linear/z"/>
+       <curve name="/uav46/mins/imu/odom/twist/twist/linear/z" color="#000c79"/>
+       <curve name="/uav46/vins_republisher/odom/twist/twist/linear/z" color="#00ffff"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/velocity/linear/z" color="#007900"/>
+       <curve name="/uav46/estimation_manager/open_vins/uav_state/velocity/linear/z" color="#80ff00"/>
+       <curve name="/uav46/hw_api/velocity/vector/z" color="#a10600"/>
+       <curve name="/uav46/control_manager/control_reference/twist/twist/linear/z" color="#000000"/>
       </plot>
      </DockArea>
     </DockSplitter>
    </Container>
   </Tab>
-  <Tab tab_name="z" containers="1">
+  <Tab containers="1" tab_name="z">
    <Container>
-    <DockSplitter count="3" orientation="-" sizes="0.333333;0.333333;0.333333">
+    <DockSplitter orientation="-" count="4" sizes="0.25;0.251059;0.248941;0.25">
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.546639" bottom="-0.034327" left="1712156269.238425" top="1.358730"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="1.193164" right="1712475908.147828" bottom="0.075110"/>
        <limitY/>
-       <curve color="#168e00" name="/uav46/estimation_manager/mins/uav_state/pose/position/z"/>
-       <curve color="#0023a1" name="/uav46/mins/imu/odom/pose/pose/position/z"/>
-       <curve color="#000000" name="/uav46/control_manager/control_reference/pose/pose/position/z"/>
-       <curve color="#beab00" name="/uav46/rosbag_estimation_manager/mins/uav_state/pose/position/z"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/pose/position/z" color="#168e00"/>
+       <curve name="/uav46/mins/imu/odom/pose/pose/position/z" color="#0023a1"/>
+       <curve name="/uav46/control_manager/control_reference/pose/pose/position/z" color="#000000"/>
+       <curve name="/uav46/rosbag_estimation_manager/mins/uav_state/pose/position/z" color="#beab00"/>
+       <curve name="/uav46/rosbag_mins/imu/odom/pose/pose/position/z" color="#ff6900"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.546639" bottom="-0.554276" left="1712156269.238425" top="0.664786"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="0.627278" right="1712475908.147828" bottom="-0.694573"/>
        <limitY/>
-       <curve color="#11a300" name="/uav46/estimation_manager/mins/uav_state/velocity/linear/z"/>
-       <curve color="#0200a8" name="/uav46/mins/imu/odom/twist/twist/linear/z"/>
-       <curve color="#b7130f" name="/uav46/hw_api/velocity/vector/z"/>
-       <curve color="#000000" name="/uav46/control_manager/control_reference/twist/twist/linear/z"/>
-       <curve color="#e1c000" name="/uav46/rosbag_estimation_manager/mins/uav_state/velocity/linear/z"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/velocity/linear/z" color="#11a300"/>
+       <curve name="/uav46/mins/imu/odom/twist/twist/linear/z" color="#0200a8"/>
+       <curve name="/uav46/hw_api/velocity/vector/z" color="#b7130f"/>
+       <curve name="/uav46/control_manager/control_reference/twist/twist/linear/z" color="#000000"/>
+       <curve name="/uav46/rosbag_estimation_manager/mins/uav_state/velocity/linear/z" color="#e1c000"/>
+       <curve name="/uav46/rosbag_mins/imu/odom/twist/twist/linear/z" color="#f08300"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.546639" bottom="-2.443722" left="1712156269.238425" top="1.965727"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="0.861313" right="1712475908.147828" bottom="-2.021962"/>
        <limitY/>
-       <curve color="#009a00" name="/uav46/estimation_manager/mins/uav_state/acceleration/linear/z"/>
-       <curve color="#c71200" name="/uav46/estimation_manager/mins/alt_mins/input/values[0]"/>
-       <curve color="#000000" name="/uav46/control_manager/control_reference/twist/twist/linear/z"/>
-       <curve color="#cfcb00" name="/uav46/rosbag_estimation_manager/mins/uav_state/acceleration/linear/z"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/acceleration/linear/z" color="#009a00"/>
+       <curve name="/uav46/estimation_manager/mins/alt_mins/input/values[0]" color="#c71200"/>
+       <curve name="/uav46/control_manager/control_reference/twist/twist/linear/z" color="#000000"/>
+       <curve name="/uav46/rosbag_estimation_manager/mins/uav_state/acceleration/linear/z" color="#cfcb00"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="102.500000" right="1712475908.147828" bottom="-2.500000"/>
+       <limitY/>
+       <curve name="/uav46/mins/cam/num_tracks/data" color="#1f77b4"/>
+       <curve name="/uav46/mins/cam/num_slam/data" color="#d62728"/>
+       <curve name="/uav46/mins/cam/num_msckf/data" color="#1ac938"/>
       </plot>
      </DockArea>
     </DockSplitter>
    </Container>
   </Tab>
-  <Tab tab_name="est_input" containers="1">
+  <Tab containers="1" tab_name="est_input">
    <Container>
-    <DockSplitter count="3" orientation="-" sizes="0.333071;0.333858;0.333071">
+    <DockSplitter orientation="-" count="3" sizes="0.333333;0.333333;0.333333">
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.556915" bottom="-0.634990" left="1712156269.238425" top="0.512350"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.728399" top="0.957022" right="1712419250.778328" bottom="-1.033482"/>
        <limitY/>
-       <curve color="#ff7f0e" name="/uav46/estimation_manager/mins/lat_mins/input/values[0]"/>
-       <curve color="#9467bd" name="/uav46/estimation_manager/mins/uav_state/acceleration/linear/x"/>
+       <curve name="/uav46/estimation_manager/mins/lat_mins/input/values[0]" color="#ff7f0e"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/acceleration/linear/x" color="#9467bd"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.556915" bottom="-0.550661" left="1712156269.238425" top="1.023448"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.728399" top="1.146040" right="1712419250.778328" bottom="-0.601264"/>
        <limitY/>
-       <curve color="#f14cc1" name="/uav46/estimation_manager/mins/lat_mins/input/values[1]"/>
-       <curve color="#17becf" name="/uav46/estimation_manager/mins/uav_state/acceleration/linear/y"/>
+       <curve name="/uav46/estimation_manager/mins/lat_mins/input/values[1]" color="#f14cc1"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/acceleration/linear/y" color="#17becf"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.556915" bottom="-2.443722" left="1712156269.238425" top="1.965727"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.728399" top="0.861313" right="1712419250.778328" bottom="-2.021962"/>
        <limitY/>
-       <curve color="#1ac938" name="/uav46/estimation_manager/mins/alt_mins/input/values[0]"/>
-       <curve color="#d62728" name="/uav46/estimation_manager/mins/uav_state/acceleration/linear/z"/>
+       <curve name="/uav46/estimation_manager/mins/alt_mins/input/values[0]" color="#1ac938"/>
+       <curve name="/uav46/estimation_manager/mins/uav_state/acceleration/linear/z" color="#d62728"/>
       </plot>
      </DockArea>
     </DockSplitter>
    </Container>
   </Tab>
-  <Tab tab_name="tab2" containers="1">
+  <Tab containers="1" tab_name="tab2">
    <Container>
-    <DockSplitter count="4" orientation="-" sizes="0.249803;0.250591;0.249803;0.249803">
+    <DockSplitter orientation="-" count="4" sizes="0.251059;0.25;0.247881;0.251059">
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.503396" bottom="-0.154997" left="1712156271.603380" top="0.125610"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="0.000000" top="0.100000" right="0.000000" bottom="-0.100000"/>
        <limitY/>
-       <curve color="#17becf" name="/uav46/control_manager/control_error/position_errors/x"/>
+       <curve name="/uav46/control_manager/control_error/position_errors/x" color="#17becf"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.503396" bottom="-0.170670" left="1712156271.603380" top="0.283426"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="0.000000" top="0.100000" right="0.000000" bottom="-0.100000"/>
        <limitY/>
-       <curve color="#bcbd22" name="/uav46/control_manager/control_error/position_errors/y"/>
+       <curve name="/uav46/control_manager/control_error/position_errors/y" color="#bcbd22"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.503396" bottom="-0.210758" left="1712156271.603380" top="0.198729"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="0.000000" top="0.100000" right="0.000000" bottom="-0.100000"/>
        <limitY/>
-       <curve color="#1f77b4" name="/uav46/control_manager/control_error/position_errors/z"/>
+       <curve name="/uav46/control_manager/control_error/position_errors/z" color="#1f77b4"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot flip_x="false" flip_y="false" mode="TimeSeries" style="Lines">
-       <range right="1712156363.503396" bottom="-0.001770" left="1712156271.603380" top="0.072568"/>
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="0.000000" top="0.100000" right="0.000000" bottom="-0.100000"/>
        <limitY/>
-       <curve color="#d62728" name="/uav46/control_manager/control_error/yaw_error"/>
+       <curve name="/uav46/control_manager/control_error/yaw_error" color="#d62728"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab containers="1" tab_name="tab2">
+   <Container>
+    <DockSplitter orientation="-" count="3" sizes="0.333333;0.333333;0.333333">
+     <DockArea name="...">
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="0.083953" right="1712419250.798328" bottom="-0.142853"/>
+       <limitY/>
+       <curve name="/uav46/mins/imu/odom/pose/pose/orientation/roll" color="#1f77b4"/>
+       <curve name="/uav46/hw_api/odometry/pose/pose/orientation/roll" color="#ff7f0e"/>
+       <curve name="/uav46/estimation_manager/mins/odom/pose/pose/orientation/roll" color="#9467bd"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot flip_x="false" style="Lines" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="0.140712" right="1712419250.798328" bottom="-0.144238"/>
+       <limitY/>
+       <curve name="/uav46/mins/imu/odom/pose/pose/orientation/pitch" color="#d62728"/>
+       <curve name="/uav46/hw_api/odometry/pose/pose/orientation/roll" color="#ff7f0e"/>
+       <curve name="/uav46/estimation_manager/mins/odom/pose/pose/orientation/pitch" color="#17becf"/>
+      </plot>
+     </DockArea>
+     <DockArea name="...">
+      <plot flip_x="false" style="LinesAndDots" mode="TimeSeries" flip_y="false">
+       <range left="1712419225.676485" top="1.292828" right="1712419250.798328" bottom="-0.108884"/>
+       <limitY/>
+       <curve name="/uav46/mins/imu/odom/pose/pose/orientation/yaw" color="#1ac938"/>
+       <curve name="/uav46/hw_api/odometry/pose/pose/orientation/yaw" color="#f14cc1"/>
+       <curve name="/uav46/estimation_manager/mins/odom/pose/pose/orientation/yaw" color="#bcbd22"/>
       </plot>
      </DockArea>
     </DockSplitter>
@@ -188,7 +232,7 @@
  <!-- - - - - - - - - - - - - - - -->
  <Plugins>
   <plugin ID="DataLoad CSV">
-   <default time_axis="" delimiter="0"/>
+   <parameters time_axis="" delimiter="0"/>
   </plugin>
   <plugin ID="DataLoad MCAP"/>
   <plugin ID="DataLoad ROS bags">

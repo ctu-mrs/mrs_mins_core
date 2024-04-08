@@ -26,10 +26,10 @@ cloud_filter:
   sequence: ["voxel_grid", "NormS"] # sequence of filters to be applied (in this order) | example: ["voxel_grid", "NormS"]
 
   voxel_grid:        # uniform sampling
-    resolution: 0.05 # (m) | voxel size
+    resolution: 0.20 # (m) | voxel size
 
   NormS:                   # Rusinkiewicz and Levoy, Efficient Variants of the ICP Algorithm, 2001
-    count: 800            # <0, max(unsigned int)) | number of points to sample
+    count: 700            # <0, max(unsigned int)) | number of points to sample
     resolution: !degrees 2 # (rad)
 
   CovS:                 # Gelfand et. al, Geometrically stable sampling for the ICP algorithm, 2003

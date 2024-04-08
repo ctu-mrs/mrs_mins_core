@@ -26,7 +26,7 @@
       <!-- tf frames -->
       <param name="frame/fcu" type="str" value="$(arg UAV_NAME)/fcu" />
       <param name="frame/global" type="str" value="$(arg UAV_NAME)/$(arg node_prefix)mins_global" />
-      <param name="frame/map" type="str" value="$(arg UAV_NAME)/$(arg node_prefix)min_map" />
+      <param name="frame/map" type="str" value="$(arg UAV_NAME)/$(arg node_prefix)mins_map" />
       <param name="frame/imu" type="str" value="$(arg UAV_NAME)/$(arg node_prefix)mins_imu" />
       <param name="frame/cam" type="str" value="$(arg UAV_NAME)/$(arg node_prefix)mins_cam" />
       <param name="frame/lidar" type="str" value="$(arg UAV_NAME)/$(arg node_prefix)mins_lidar" />
@@ -40,13 +40,17 @@
       <remap from="/mins/cam/num_msckf" to="$(arg node_prefix)mins/cam/num_msckf" />
       <remap from="/mins/cam/slam" to="$(arg node_prefix)mins/cam/slam" />
       <remap from="/mins/cam/num_slam" to="$(arg node_prefix)mins/cam/num_slam" />
+      <remap from="/mins/cam/timing" to="$(arg node_prefix)mins/cam/timing" />
       <remap from="/mins/cam0/track_img" to="$(arg node_prefix)mins/cam0/track_img" />
       <remap from="/mins/cam1/track_img" to="$(arg node_prefix)mins/cam1/track_img" />
       <remap from="/mins/cam/num_tracks" to="$(arg node_prefix)mins/cam/num_tracks" />
       <remap from="/mins/imu/odom" to="$(arg node_prefix)mins/imu/odom" />
       <remap from="/mins/imu/path" to="$(arg node_prefix)mins/imu/path" />
+      <remap from="/mins/imu/timing" to="$(arg node_prefix)mins/imu/timing" />
+      <remap from="/mins/lidar/timing" to="$(arg node_prefix)mins/lidar/timing" />
       <remap from="/mins/lidar0/map" to="$(arg node_prefix)mins/lidar0/map" />
       <remap from="/mins/lidar0/points" to="$(arg node_prefix)mins/lidar0/points" />
+      <remap from="/mins/lidar0/map_input_points" to="$(arg node_prefix)mins/lidar0/map_input_points" />
 
     </node>
 <!--//}-->
