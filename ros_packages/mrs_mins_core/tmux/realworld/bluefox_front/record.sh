@@ -19,46 +19,16 @@ exclude=(
 # Every topic containing "compressed"
 # '(.*)compressed'
 # Every topic containing "image_raw"
-'(.*)rgb/image_raw'
-'(.*)left/image_raw'
-'(.*)right/image_raw'
-'(.*)/color/image_raw'
-'(.*)/rgbd/depth/(.*)'
-'(.*)/aligned_depth_to_infra(.*)'
-'(.*)infra1/image_raw'
-'(.*)infra2/image_raw'
-'(.*)fisheye1/image_raw'
-'(.*)fisheye2/image_raw'
-'(.*)basler_down/image_raw'
-'(.*)stereo/image_raw/compressed'
+'(.*)image_raw'
 # Every topic containing "theora"
 '(.*)theora(.*)'
 # Every topic containing "h264"
-# '(.*)h264(.*)'
+'(.*)h264(.*)'
+'(.*)compressedDepth(.*)'
 
 '(.*)os_cloud_nodelet(.*)'
-'(.*)pcl_filtered'
-'(.*)pcl_filtered_slow'
-'(.*)p_o_m_r'
-'(.*)tsdf_slice'
-'(.*)occupied_nodes'
-'(.*)tsdf_map_out'
-# '(.*)ov_msckf(.*)'
-'(.*)ov_msckf/loop(.*)'
-'(.*)ov_msckf/trackhist'
-'(.*)compressedDepth'
-# '(.*)image_mono16(.*)'
-'(.*)image_mono8(.*)'
-'(.*)image_noise(.*)'
-#'(.*)image_depth(.*)'
-'(.*)point(.*)'
-'(.*)debug(.*)'
-'(.*)processed(.*)'
-'(.*)nn/overlay'
-'(.*)nn/overlay_compressed'
-'(.*)nn/overlay_compressed(.*)Depth'
-'(.*)rgb/preview(.*)'
-'(.*)nn/passthrough(.*)'
+
+'(.*)track_img'
 )
 
 # file's header
