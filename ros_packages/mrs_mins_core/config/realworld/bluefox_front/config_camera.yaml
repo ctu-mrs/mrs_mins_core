@@ -29,6 +29,8 @@ cam:
   init_cov_in_r: 1e-5
   sigma_px: 1
   chi2_mult: 2.0
+  fi_max_dist: 60.0 # [m] maximum distance to accept triangulated features
+
 
   # ==================================================================
   # ==================================================================
