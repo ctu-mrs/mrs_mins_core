@@ -1,17 +1,39 @@
 <launch>
 
-  <arg name="UAV_NAME" default="" />
+  <arg name="UAV_NAME" default="$(env UAV_NAME)" />
   <arg name="RUN_TYPE" default="realworld" />
 
-  <arg name="config" default="rosbag/bluefox_front" />
+  <arg name="config" default="realworld/bluefox_front_outdoor" />
 
-  <arg name="node_prefix" default="rosbag_"/>
+  <arg name="node_prefix" default=""/>
 
   <arg name="vio_imu_frame" default="$(arg UAV_NAME)/vio_imu" />
   <arg name="fcu_frame" default="$(arg UAV_NAME)/fcu" />
 
+  <arg name="device" default="$(env BLUEFOX)" />
+  <arg name="camera_name" default="bluefox_vio_front" />
+
 
   <group ns="$(arg UAV_NAME)" >
+
+<!--//{ bluefox2 -->
+<include file="$(find bluefox2)/launch/single_nodelet.launch">
+
+  <!-- Camera Settings -->
+  <arg name="plugin" value="false" />
+  <arg name="manager" value="" />
+  <arg name="camera_name" value="$(arg camera_name)" />
+
+  <arg name="aec" value="1" />
+  <arg name="agc" value="1" />
+  <arg name="acs" value="1" />
+  <arg name="ctm" value="3" />
+  <arg name="max_expose_jump" value="1000" />
+  <arg name="expose_upper_limit_us" default="50000"/>
+  <arg name="des_grey_value" value="80" />
+  <arg name="calib_url" value="file://$(find mrs_open_vins_core)/calibration/mv_$(arg    device).yaml" />
+</include>
+<!--//}-->
 
 <!--//{ run mins -->
     <node name="mins_subscribe" pkg="mins" type="subscribe" output="screen" >
@@ -42,6 +64,7 @@
       <remap from="/mins/cam0/track_img" to="$(arg node_prefix)mins/cam0/track_img" />
       <remap from="/mins/cam1/track_img" to="$(arg node_prefix)mins/cam1/track_img" />
       <remap from="/mins/cam/num_tracks" to="$(arg node_prefix)mins/cam/num_tracks" />
+      <remap from="/mins/imu/pose" to="$(arg node_prefix)mins/imu/pose" />
       <remap from="/mins/imu/odom" to="$(arg node_prefix)mins/imu/odom" />
       <remap from="/mins/imu/path" to="$(arg node_prefix)mins/imu/path" />
       <remap from="/mins/imu/timing" to="$(arg node_prefix)mins/imu/timing" />
@@ -61,14 +84,14 @@
     <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="tf_fcu_to_mins_imu" args="0.0 0.0 0.0 0.0 0.0 0.0 $(arg fcu_frame) $(arg mins_imu_frame)" /> -->
 <!--//}-->
 
-<!--<!-1-//{ transforms imu measurements to fcu frame -1->-->
-<!--    <node name="imu_transformer" pkg="imu_transformer" type="imu_transformer_node" output="screen" >-->
-<!--      <param name="target_frame" type="str" value="$(arg fcu_frame)" />-->
+<!--//{ transforms imu measurements to fcu frame -->
+    <node name="imu_transformer" pkg="imu_transformer" type="imu_transformer_node" output="screen" >
+      <param name="target_frame" type="str" value="$(arg fcu_frame)" />
 
-<!--        <remap from="imu_in/data" to="vio_imu/imu_filtered" />-->
-<!--        <remap from="imu_out/data" to="vio_imu/imu_filtered_fcu" />-->
-<!--    </node>-->
-<!--<!-1-//}-1->-->
+        <remap from="imu_in/data" to="vio_imu/imu_filtered" />
+        <remap from="imu_out/data" to="vio_imu/imu_filtered_fcu" />
+    </node>
+<!--//}-->
   
 <!--//{ decompress compressed images to image raw from rosbag -->
     <node name="republish_cam0" type="republish" pkg="image_transport" output="screen" args="compressed in:=/$(arg UAV_NAME)/bluefox_vio_front/image_raw raw out:=/$(arg UAV_NAME)/bluefox_vio_front/image_raw" />
@@ -76,13 +99,15 @@
 
   </group>
 
-<!--<!-1-//{ filter imu -1->-->
-<!--    <include file="$(find mrs_mins_core)/launch/filter_vio_imu.launch">-->
+<!--//{ vio_imu -->
+  <include file="$(find mrs_serial)/launch/vio_imu.launch">
+  </include>
+<!--//}-->
 
-<!--      <arg name="UAV_NAME" value="$(arg UAV_NAME)" />-->
-
-<!--    </include>-->
-<!--<!-1-//}-1->-->
+<!--//{ filter imu -->
+    <include file="$(find mrs_vins_imu_filter)/launch/filter_icm_42688.launch">
+    </include>
+<!--//}-->
 
 </launch>
 
