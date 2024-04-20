@@ -3,7 +3,7 @@
 est:
   gravity_mag: 9.81
   clone_freq: 20 # 10 Hz fastest, 20 Hz best tradeoff, 30 Hz lowest error
-  window_size: 0.5 # controls the size of the Jacobians, the number of frames features are tracked for, and the number of frames it takes to intialize a slam feature
+  window_size: 1.0 # controls the size of the Jacobians, the number of frames features are tracked for, and the number of frames it takes to intialize a slam feature
   intr_order: 3 # 1 Hz fastest (linear interpolation, 3 best tradeoff, 5 lowest error
   intr_error_mlt: 1.00
   intr_error_ori_thr: 0.007

@@ -12,9 +12,9 @@ cam:
   do_calib_dt: true
   n_pts: 200
   fast: 15
-  grid_x: 10
-  grid_y: 10
-  min_px_dist: 15
+  grid_x: 20
+  grid_y: 20
+  min_px_dist: 20
   knn: 0.70
   downsample: false
   histogram_method: "HISTOGRAM" # NONE, HISTOGRAM, CLAHE
@@ -29,6 +29,10 @@ cam:
   init_cov_in_r: 1e-5
   sigma_px: 1
   chi2_mult: 2.0
+  fi_max_dist: 300.0 # [m] maximum distance to accept triangulated features
+  fi_max_baseline: 40.0
+  fi_triangulate_1d: false
+
 
   # ==================================================================
   # ==================================================================
