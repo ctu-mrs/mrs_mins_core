@@ -47,6 +47,8 @@ input=(
 '
   'Mins' 'waitForHw; roslaunch mrs_mins_core realworld_bluefox_front.launch
 '
+  'AutoStart' 'waitForHw; roslaunch mrs_uav_autostart automatic_start.launch
+'
 # do NOT modify the command list below
   'EstimDiag' 'waitForHw; rostopic echo /'"$UAV_NAME"'/estimation_manager/diagnostics
 '
