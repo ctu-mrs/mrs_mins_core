@@ -58,7 +58,7 @@ oak:
   left_i_width: 1280
   left_r_exposure: 5000
   left_r_iso: 200
-  left_r_set_man_exposure: true
+  left_r_set_man_exposure: false
 
   nn_i_disable_resize: false
   nn_i_enable_passthrough: false
@@ -136,7 +136,7 @@ oak:
   right_i_width: 1280
   right_r_exposure: 5000
   right_r_iso: 200
-  right_r_set_man_exposure: true
+  right_r_set_man_exposure: false
 
   stereo_i_add_exposure_offset: false
   stereo_i_align_depth: false
